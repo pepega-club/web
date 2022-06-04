@@ -1,0 +1,19 @@
+{
+	"name": "pepega-web",
+	"private": true,
+	"version": "0.0.0",
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build",
+		"preview": "vite preview",
+		"format": "prettier -w ./*.{html,js,scss,json}"
+	},
+	"devDependencies": {
+		"prettier": "^2.6.2",
+		"sass": "^1.52.2",
+		"vite": "^2.9.9"
+	},
+	"dependencies": {
+		"ress": "^5.0.2"
+	}
+}

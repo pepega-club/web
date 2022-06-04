@@ -1,0 +1,35 @@
+@use "sass:math";
+
+@media (prefers-color-scheme: dark) {
+	html {
+		background: hsl(0deg, 0%, 10%);
+	}
+}
+
+$w: 5rem;
+$h: 5rem;
+
+.pepega {
+	position: absolute;
+
+	width: $w;
+	height: $h;
+}
+
+@keyframes slide-y {
+	from {
+		top: 0;
+	}
+	to {
+		top: calc(100% - $h);
+	}
+}
+
+@keyframes slide-x {
+	from {
+		left: 0;
+	}
+	to {
+		left: calc(100% - $w);
+	}
+}
