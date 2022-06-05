@@ -1,7 +1,11 @@
 @use "sass:math";
 
 :root {
-	--bouncy-size: 50px;
+	--bouncy-size: 4.5rem;
+
+	@media (orientation: portrait) {
+		--bouncy-size: 3.5rem;
+	}
 }
 
 html {
