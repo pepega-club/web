@@ -1,17 +1,18 @@
 @use "sass:math";
 
-$x: 5rem;
+:root {
+	--bouncy-size: 50px;
+}
 
 html {
 	font-family: sans-serif;
-}
 
-@media (prefers-color-scheme: dark) {
-	html {
+	@media (prefers-color-scheme: dark) {
 		background: hsl(0deg, 0%, 10%);
 		color: hsl(0deg, 0%, 80%);
 	}
 }
+
 
 html,
 body {
@@ -42,8 +43,8 @@ body {
 		border-radius: 100%;
 	}
 
-	width: $x;
-	height: $x;
+	width: var(--bouncy-size);
+	height: var(--bouncy-size);
 }
 
 @keyframes slide-y {
@@ -51,7 +52,7 @@ body {
 		top: 0;
 	}
 	to {
-		top: calc(100% - $x);
+		top: calc(100% - var(--bouncy-size));
 	}
 }
 
@@ -60,6 +61,6 @@ body {
 		left: 0;
 	}
 	to {
-		left: calc(100% - $x);
+		left: calc(100% - var(--bouncy-size));
 	}
 }
