@@ -16,29 +16,31 @@ function cssScale(axis, value, unit) {
 }
 
 function cssSlide(axis) {
-	return `slide-${axis} ${cssScale(axis, cssRandom(4, 8), "s")} linear -${cssRandom(0, 8)}s ${
-		cssRandom(0, 1) < 0.5 ? "alternate" : "alternate-reverse"
-	} infinite`;
+	return `slide-${axis} ${cssScale(axis, cssRandom(8, 14), "s")} linear -${cssRandom(0, 14)}s normal infinite`;
 }
 
 function createBouncy(src, href, round = false) {
-	let el;
+	let el1 = document.createElement("div");
+	el1.classList.add("bouncy");
+
+	let el2;
 	if (href) {
-		el = document.createElement("a");
-		el.href = href;
-		el.target = "_blank";
+		el2 = document.createElement("a");
+		el2.href = href;
+		el2.target = "_blank";
 	} else {
-		el = document.createElement("span");
+		el2 = document.createElement("span");
 	}
 
-	el.classList.add("bouncy");
 	if (round) {
-		el.classList.add("round");
+		el2.classList.add("round");
 	}
 
-	el.style = `--img: url(${src}); animation: ${cssSlide("x")}, ${cssSlide("y")}`;
+	el1.style = `animation: ${cssSlide("y")}`;
+	el2.style = `--img: url(${src}); animation: ${cssSlide("x")}`;
 
-	document.body.appendChild(el);
+	el1.appendChild(el2);
+	document.body.appendChild(el1);
 }
 
 function arrayPick(arr, n) {
