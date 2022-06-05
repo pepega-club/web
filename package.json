@@ -6,7 +6,7 @@
 		"dev": "vite",
 		"build": "vite build",
 		"preview": "vite preview",
-		"format": "prettier -w ./*.{html,js,scss,json}"
+		"format": "prettier -w \"./*.{html,js,mjs,scss,json}\""
 	},
 	"devDependencies": {
 		"prettier": "^2.6.2",
