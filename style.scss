@@ -13,7 +13,8 @@ html {
 	}
 }
 
-html, body {
+html,
+body {
 	min-width: 100vw;
 	min-height: 100vh;
 
@@ -28,8 +29,18 @@ html, body {
 	gap: 1rem;
 }
 
-.pepega {
+.bouncy {
+	display: block;
 	position: absolute;
+
+	background: var(--img);
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+
+	&.round {
+		border-radius: 100%;
+	}
 
 	width: $x;
 	height: $x;

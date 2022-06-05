@@ -1,5 +1,11 @@
 const PEPEGA_EMOTES_HOST = "https://emotes.pepega.club";
 
+const pepegas = [
+	{ name: "33kk", url: "https://kkx.one" },
+	{ name: "liphitc", url: "https://github.com/LiphiTC" },
+	{ name: "qwert0p", url: "https://github.com/qwert0p" },
+];
+
 function cssRandom(min, max) {
 	return (Math.random() * max + min).toFixed(2);
 }
@@ -14,36 +20,49 @@ function cssSlide(axis) {
 	} infinite`;
 }
 
-function createPepega(src) {
-	let el = document.createElement("img");
+function createBouncy(src, href, round = false) {
+	let el;
+	if (href) {
+		el = document.createElement("a");
+		el.href = href;
+		el.target = "_blank";
+	} else {
+		el = document.createElement("span");
+	}
 
-	el.src = src;
-	el.classList.add("pepega");
-	el.style = `animation: ${cssSlide("x")}, ${cssSlide("y")}`;
+	el.classList.add("bouncy");
+	if (round) {
+		el.classList.add("round");
+	}
+
+	el.style = `--img: url(${src}); animation: ${cssSlide("x")}, ${cssSlide("y")}`;
 
 	document.body.appendChild(el);
 }
 
 function arrayPick(arr, n) {
-    let result = new Array(n),
-        len = arr.length,
-        taken = new Array(len);
-    if (n > len)
-        return result;
-    while (n--) {
-        const x = Math.floor(Math.random() * len);
-        result[n] = arr[x in taken ? taken[x] : x];
-        taken[x] = --len in taken ? taken[len] : len;
-    }
-    return result;
+	let result = new Array(n),
+		len = arr.length,
+		taken = new Array(len);
+	if (n > len) return result;
+	while (n--) {
+		const x = Math.floor(Math.random() * len);
+		result[n] = arr[x in taken ? taken[x] : x];
+		taken[x] = --len in taken ? taken[len] : len;
+	}
+	return result;
 }
 
 async function main() {
 	const res = await fetch(`${PEPEGA_EMOTES_HOST}/index.json`);
 	const emotes = await res.json();
 
-	for (const emote of arrayPick(emotes, 15)) {
-		createPepega(`${PEPEGA_EMOTES_HOST}/emotes/${emote}`);
+	for (const emote of arrayPick(emotes, 12)) {
+		createBouncy(`${PEPEGA_EMOTES_HOST}/emotes/${emote}`);
+	}
+
+	for (const pepega of pepegas) {
+		createBouncy(`/assets/avatars/${pepega.name}.jpg`, pepega.url, true);
 	}
 
 	document.querySelector(".loader").remove();
