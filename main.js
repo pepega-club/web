@@ -4,6 +4,7 @@ const pepegas = [
 	{ name: "33kk", url: "https://kkx.one" },
 	{ name: "liphitc", url: "https://github.com/LiphiTC" },
 	{ name: "qwert0p", url: "https://github.com/qwert0p" },
+	{ name: "bekert", url: "https://github.com/Bekert" },
 ];
 
 function cssRandom(min, max) {
