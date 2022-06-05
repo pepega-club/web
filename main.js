@@ -1,3 +1,5 @@
+const PEPEGA_EMOTES_HOST = "https://emotes.pepega.club";
+
 function cssRandom(min, max) {
 	return (Math.random() * max + min).toFixed(2);
 }
@@ -37,11 +39,11 @@ function arrayPick(arr, n) {
 }
 
 async function main() {
-	const res = await fetch("https://emotes.pepega.club/emotes.json");
+	const res = await fetch(`${PEPEGA_EMOTES_HOST}/index.json`);
 	const emotes = await res.json();
 
 	for (const emote of arrayPick(emotes, 15)) {
-		createPepega(emote.url);
+		createPepega(`${PEPEGA_EMOTES_HOST}/emotes/${emote}`);
 	}
 
 	document.querySelector(".loader").remove();
