@@ -53,13 +53,13 @@ function arrayPick(arr, n) {
 	return result;
 }
 
-for (const pepega of pepegas) {
-	createBouncy(`/avatars/${pepega.name}.jpg`, pepega.url, true);
-}
-
 async function main() {
 	const res = await fetch(`${PEPEGA_EMOTES_HOST}/index.json`);
 	const emotes = await res.json();
+
+	for (const pepega of pepegas) {
+		createBouncy(`/avatars/${pepega.name}.jpg`, pepega.url, true);
+	}
 
 	for (const emote of arrayPick(emotes, 15 - pepegas.length)) {
 		createBouncy(`${PEPEGA_EMOTES_HOST}/emotes/${emote}`);
