@@ -1,10 +1,10 @@
 @use "sass:math";
 
 :root {
-	--bouncy-size: 4.5rem;
+	--bouncy-size: 4rem;
 
-	@media (orientation: portrait) {
-		--bouncy-size: 3.5rem;
+	@media (orientation: landscape) {
+		--bouncy-size: 5rem;
 	}
 }
 
