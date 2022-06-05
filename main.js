@@ -7,7 +7,7 @@ function cssScale(axis, value, unit) {
 }
 
 function cssSlide(axis) {
-	return `slide-${axis} ${cssScale(axis, cssRandom(4, 8), "s")} linear ${cssScale(axis, -cssRandom(0, 8), "s")} ${
+	return `slide-${axis} ${cssScale(axis, cssRandom(4, 8), "s")} linear -${cssRandom(0, 8)}s ${
 		cssRandom(0, 1) < 0.5 ? "alternate" : "alternate-reverse"
 	} infinite`;
 }
@@ -20,16 +20,6 @@ function createPepega(src) {
 	el.style = `animation: ${cssSlide("x")}, ${cssSlide("y")}`;
 
 	document.body.appendChild(el);
-}
-
-let scaleStyle = document.createElement("style");
-document.head.appendChild(scaleStyle);
-
-function updateScale() {
-	const w = window.innerWidth;
-	const h = window.innerHeight;
-
-	scaleStyle.textContent = `:root { --x-scale: ${w > h ? 1 : w / h}; --y-scale: ${h > w ? 1 : h / w} }`;
 }
 
 function arrayPick(arr, n) {
@@ -50,12 +40,24 @@ async function main() {
 	const res = await fetch("https://emotes.pepega.club/emotes.json");
 	const emotes = await res.json();
 
-	for (const emote of arrayPick(emotes, 20)) {
+	for (const emote of arrayPick(emotes, 15)) {
 		createPepega(emote.url);
 	}
+
+	document.querySelector(".loader").remove();
 }
 
-main();
+let scaleStyle = document.createElement("style");
+document.head.appendChild(scaleStyle);
+
+function updateScale() {
+	const w = window.innerWidth;
+	const h = window.innerHeight;
+
+	scaleStyle.textContent = `:root { --x-scale: ${w > h ? 1 : w / h}; --y-scale: ${h > w ? 1 : h / w} }`;
+}
 
 updateScale();
 window.addEventListener("resize", updateScale);
+
+main();
